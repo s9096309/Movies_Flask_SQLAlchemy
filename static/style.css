@@ -1,0 +1,252 @@
+/* Body Styling */
+body {
+    background: #f4f4f4;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styling */
+header {
+    background: #009B50; /* Green background */
+    color: white;
+    padding: 10px;
+}
+
+/* Navigation Styling */
+header nav {
+    display: flex;
+    justify-content: space-between; /* Distribute space between items */
+    align-items: center;
+}
+
+/* Navigation Links */
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #007a40;
+}
+
+/* Title Styling */
+header h1 {
+    margin: 0 50px; /* Add 50px margin to the left and right */
+    font-size: 24px;
+}
+
+/* Content Area */
+.content {
+    padding: 20px;
+}
+
+/* Movie List Title Styling */
+h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Movie Grid Container */
+.movie-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Individual Movie Styling */
+.movie {
+    background: white;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 200px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.movie:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Movie Poster Styling */
+.movie-poster img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Movie Details Styling */
+.movie-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.movie-year {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.movie-rating {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Form Styling */
+form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Update Button */
+.update-button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.update-button:hover {
+    background-color: #218838;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* List styling */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+/* User Movies Page Styling */
+.user-movies {
+    font-family: 'Arial', sans-serif;
+}
+
+.user-movies h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.user-movies ul {
+    list-style: none;
+    padding: 0;
+}
+
+.user-movies li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+/* This is the key change to fix the alignment */
+.user-movies .movie-details {
+    flex-grow: 1;
+    margin-right: 10px; /* Add some space between the details and buttons */
+}
+
+.user-movies a {
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 5px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.user-movies a:hover {
+    background-color: #0056b3;
+}
+
+.user-movies .add-movie-link {
+    display: inline-block;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+
+.user-movies .back-link {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+/* Add User Page Styling */
+.add-user-container {
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.add-user-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.add-user-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.add-user-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.add-user-container button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

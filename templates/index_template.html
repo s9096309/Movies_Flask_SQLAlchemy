@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+
+<header>
+    <nav>
+        <a href="{{ url_for('users_list') }}">See all Users</a>
+        <h1>My Movie App</h1>
+        <a href="{{ url_for('add_user') }}">Add User</a>
+    </nav>
+</header>
+    <div class="movie-grid">
+        {% for movie in movie_grid %}
+            <div class="movie">
+                <div class="movie-poster">
+                    {% if movie['poster_url'] %}
+                        <a href="https://www.imdb.com/title/{{ movie['imdb_id'] }}" target="_blank">
+                            <img src="{{ movie['poster_url'] }}" alt="{{ movie['title'] }}">
+                        </a>
+                    {% else %}
+                        <p>No image available</p>
+                    {% endif %}
+                </div>
+                <div class="movie-details">
+                    <p class="movie-title">{{ movie['title'] }}</p>
+                    <p class="movie-year">{{ movie['year'] }}</p>
+                    <p class="movie-rating">{{ movie['rating'] }} / 10</p>
+                    <a href="{{ url_for('update_movie', user_id=movie['user_id'], movie_id=movie['id']) }}">Update</a>
+                    <a href="{{ url_for('delete_movie', user_id=movie['user_id'], movie_id=movie['id']) }}">Delete</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>
