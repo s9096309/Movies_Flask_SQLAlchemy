@@ -2,6 +2,7 @@ import sqlalchemy
 from flask_sqlalchemy import SQLAlchemy
 from storage.data_manager_interface import DataManagerInterface
 
+
 class SQLiteDataManager(DataManagerInterface):
     def __init__(self, app):
         self.db = SQLAlchemy(app)
@@ -26,13 +27,17 @@ class SQLiteDataManager(DataManagerInterface):
         with app.app_context():
             self.db.create_all()
 
+    def _convert_to_dict(self, db_object):
+        return {col.name: getattr(db_object, col.name) for col in db_object.__table__.columns}
+
     def get_all_users(self):
-        return [{"id": user.id, "name": user.name} for user in self.User.query.all()]
+        users = self.User.query.all()
+        return [self._convert_to_dict(user) for user in users]
 
     def get_user_by_id(self, user_id):
         user = self.User.query.get(user_id)
         if user:
-            return {"id": user.id, "name": user.name}
+            return self._convert_to_dict(user)
         return None
 
     def create_user(self, name):
@@ -51,25 +56,13 @@ class SQLiteDataManager(DataManagerInterface):
                                    poster_url=poster_url, imdb_id=imdb_id)
             self.db.session.add(new_movie)
             self.db.session.commit()
-        except sqlalchemy.exc.OperationalError as e:  # Catch OperationalError for database errors
+        except Exception as e:  # Catch any database error
             self.db.session.rollback()
             print(f"Database error: {e}")
 
     def get_movies_by_user(self, user_id):
         movies = self.Movie.query.filter_by(user_id=user_id).all()
-        return [
-            {
-                "id": movie.id,
-                "user_id": movie.user_id,  # ADDED user_id HERE
-                "title": movie.title,
-                "director": movie.director,
-                "year": movie.year,
-                "rating": movie.rating,
-                "poster_url": movie.poster_url,
-                "imdb_id": movie.imdb_id
-            }
-            for movie in movies
-        ]
+        return [self._convert_to_dict(movie) for movie in movies]
 
     def update_movie(self, movie_id, name, director, year, rating):
         movie = self.Movie.query.get(movie_id)
